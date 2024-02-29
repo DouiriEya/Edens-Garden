@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowers </title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .product {
+        margin-bottom: 20px;
+    }
+    .btn-quantity {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Impress Me </h1>
+
+    <div class="product">
+        <h2>Tulipe</h2>
+        <img src="https://i.pinimg.com/736x/9f/4f/8a/9f4f8aa35c8b8933a57b76d854c3ea1a.jpg" alt="">
+        <p>Price: $15</p>
+        <div>
+            <button class="btn btn-primary btn-quantity" onclick="decreaseQuantity('shovel')">-</button>
+            <span id="shovelQuantity">0</span>
+            <button class="btn btn-primary btn-quantity" onclick="increaseQuantity('shovel')">+</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <h2>Mixed Bouquet</h2>
+        <img src="https://i.pinimg.com/564x/9d/13/6c/9d136cb164d6ea14eb476d4186512804.jpg" alt="">
+        <p>Price: $10</p>
+        <div>
+            <button class="btn btn-primary btn-quantity" onclick="decreaseQuantity('shears')">-</button>
+            <span id="shearsQuantity">0</span>
+            <button class="btn btn-primary btn-quantity" onclick="increaseQuantity('shears')">+</button>
+        </div>
+    </div>
+
+    <div class="product">
+        <h2>Baby's Breath Flowers</h2>
+        <img src="https://i.pinimg.com/564x/60/2b/d3/602bd35258f8bb51db7d2b0f9703ec95.jpg" alt="">
+        <p>Price: $20</p>
+        <div>
+            <button class="btn btn-primary btn-quantity" onclick="decreaseQuantity('hose')">-</button>
+            <span id="hoseQuantity">0</span>
+            <button class="btn btn-primary btn-quantity" onclick="increaseQuantity('hose')">+</button>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-success" onclick="checkout()">Checkout</button>
+    </div>
+</div>
+
+<script>
+    // Function to increase quantity
+    function increaseQuantity(product) {
+        var quantityElement = document.getElementById(product + 'Quantity');
+        var quantity = parseInt(quantityElement.textContent);
+        quantityElement.textContent = quantity + 1;
+    }
+
+    // Function to decrease quantity
+    function decreaseQuantity(product) {
+        var quantityElement = document.getElementById(product + 'Quantity');
+        var quantity = parseInt(quantityElement.textContent);
+        if (quantity > 0) {
+            quantityElement.textContent = quantity - 1;
+        }
+    }
+
+    // Function to process checkout
+    function checkout() {
+        var shovelQuantity = parseInt(document.getElementById('shovelQuantity').textContent);
+        var shearsQuantity = parseInt(document.getElementById('shearsQuantity').textContent);
+        var hoseQuantity = parseInt(document.getElementById('hoseQuantity').textContent);
+        
+        // You can now process the order with the quantities obtained above
+        // For example, you can calculate the total price and display a confirmation message
+        var totalPrice = (shovelQuantity * 15) + (shearsQuantity * 10) + (hoseQuantity * 20);
+        alert('Your total is: $' + totalPrice);
+    }
+</script>
+
+</body>
+</html>
